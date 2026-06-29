@@ -1,0 +1,61 @@
+.fullscreen{
+    background-color: #AEC4EB;
+    width: 100vw;
+    height: 95vh;
+}
+
+.titleText{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.subheading{
+    margin-bottom: 10px;
+    color: white;
+    font-size: 60px;
+    font-weight:lighter;
+}
+
+
+.imageHero{
+    width: 50vw;
+    height: 50vh;
+}
+
+.row{
+    display: grid;
+    gap:20px;
+    /*splits into two parts*/
+    grid-template-columns: 1fr 1fr;
+    padding: 18px;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 100px;
+    background: #5075b4;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+  background: #1e458a; 
+  cursor: pointer;
+}
+
+.btn:active {
+  background: #1e458a; 
+  cursor: pointer;
+}
+
+.bullet {
+    padding: 10px;
+    display: list-item;
+    list-style-type: square;
+    list-style-position: inside;
+}

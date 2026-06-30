@@ -1,7 +1,7 @@
 .fullscreen{
     background-color: #AEC4EB;
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
 }
 
 .titleText{
@@ -10,6 +10,12 @@
     color: #fff;
     font-size: 100px;
     font-weight: bold;
+}
+
+.centerAlign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .subheading{

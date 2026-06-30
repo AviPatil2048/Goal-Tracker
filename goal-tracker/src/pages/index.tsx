@@ -14,31 +14,31 @@ export default function Home() {
   return (
     <>
       <div className={styles.fullscreen}>
-        <Navbar/>        
-        <h1 className={`justify-center flex ${styles.titleText}`}>achieve your goals together</h1>
+        <div className={styles.centerAlign}>
+          <h1 className={styles.titleText}>achieve your goals together</h1>
+        </div>
         <div className={styles.row}>
           <img src={landingImg.src}
           className={styles.imageHero}>
           </img>
           <div>
-            <h1 className={`justify-center flex ${styles.subheading}`}>
-              what are we?
-            </h1>
+            <div className={styles.centerAlign}>
+              <h1 className={styles.subheading}>
+                what are we?
+              </h1>
+            </div>
             <p>goaltracker (working title) is centered towards motivating in groups in order to achieve a common goal.
               for example saving for a joint trip, or betting on whoever gets their license first! 
               maybe the top contributor gets a special prize or bragging points, but let this process be fun and collaborative!
             </p>
-            <div className="justify-center flex">
-              <button type="button" onClick={handleJoin}
-              
-              className={styles.btn}>
+            <div className={styles.centerAlign}>
+              <button type="button" onClick={handleJoin} className={styles.btn}>
                 join now
               </button>              
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
     </>
   );
 }

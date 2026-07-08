@@ -1,11 +1,11 @@
-import { useState, FormEvent, useEffect } from "react";
+import { useState, FormEvent, useEffect, useContext} from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import styles from "@/styles/SignIn.module.css";
 
 export default function SignInPage() {
-  const { login, userProfile } = useAuth();
+  const { loginUser } = useAuth();
   const router = useRouter();
 
   const [email,    setEmail]    = useState("");
@@ -45,10 +45,11 @@ export default function SignInPage() {
     if (pwErr) { setError(pwErr); return; }
 
     setLoading(true);
-    const result = await login(email, password);
+    
+    const result = await loginUser(email, password);
     setLoading(false);
 
-    if (!result.success) {
+    if (!result) {
       setError(result.message);
       return;
     }
@@ -57,10 +58,10 @@ export default function SignInPage() {
     setTimeout(() => {
       const stored = localStorage.getItem("currentUser");
       if (stored) {
-        const u = JSON.parse(stored);
-        router.push(u.role === "vendor" ? "/VendorDashboard" : "/HirerDashboard");
+        router.push("/dashboard");
       }
     }, 1000);
+    
   }
 
   return (

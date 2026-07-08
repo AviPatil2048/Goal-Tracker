@@ -8,7 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 const STRONG_PW = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/;
 
 export default function SignUpPage() {
-  const { signUp, userProfile } = useAuth();
+  const { registerUser, user } = useAuth();
   const router = useRouter();
 
   const [name, setName] = useState("");
@@ -55,6 +55,7 @@ export default function SignUpPage() {
     if (!validate()) return;
 
     setLoading(true);
+    /*
     const result = await signUp(email, password, name, username);
     setLoading(false);
 
@@ -62,7 +63,7 @@ export default function SignUpPage() {
       setErrors({ email: result.message });
       return;
     }
-
+    */
     router.push("/SignIn");
   }
 

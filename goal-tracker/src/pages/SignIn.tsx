@@ -1,11 +1,11 @@
-import { useState, FormEvent, useEffect, useContext} from "react";
+import { useState, FormEvent, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthContext";
 import styles from "@/styles/SignIn.module.css";
 
 export default function SignInPage() {
-  const { loginUser } = useAuth();
+  const { login, user } = useAuth();
   const router = useRouter();
 
   const [email,    setEmail]    = useState("");
@@ -13,13 +13,6 @@ export default function SignInPage() {
   const [error,    setError]    = useState("");
   const [welcome,  setWelcome]  = useState("");
   const [loading,  setLoading]  = useState(false);
-  
-  /*
-  useEffect(() => {
-    if (!user) return;
-    router.push(user.role === "vendor" ? "/VendorDashboard" : "/HirerDashboard");
-  }, [user, router]);
-  */
 
   function validateEmail(value: string): string {
     if (!value.trim()) return "Email is required.";
@@ -45,11 +38,10 @@ export default function SignInPage() {
     if (pwErr) { setError(pwErr); return; }
 
     setLoading(true);
-    
-    const result = await loginUser(email, password);
+    const result = await login(email, password);
     setLoading(false);
 
-    if (!result) {
+    if (!result.success) {
       setError(result.message);
       return;
     }
@@ -58,10 +50,9 @@ export default function SignInPage() {
     setTimeout(() => {
       const stored = localStorage.getItem("currentUser");
       if (stored) {
-        router.push("/dashboard");
+        router.push("/");
       }
     }, 1000);
-    
   }
 
   return (
